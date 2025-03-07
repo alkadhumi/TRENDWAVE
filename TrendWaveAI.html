@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrendWaveAI</title>
+    <style>
+        /* Previous styles remain the same */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1c20 0%, #2c3e50 100%);
+            min-height: 100vh;
+            color: #fff;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Enhanced Header Styles */
+        .header {
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+
+        /* Enhanced Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            min-height: calc(100vh - 140px);
+            position: relative;
+        }
+
+        .welcome-text {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInAndSlide 1.5s ease-out;
+            position: relative;
+        }
+
+        /* Enhanced Form Container */
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 450px;
+            animation: fadeInUp 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            animation: shimmer 3s infinite;
+        }
+
+        .connect-text {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Enhanced Input Fields */
+        .input-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+            animation: slideInRight 0.5s ease-out;
+        }
+
+        input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #00c6ff;
+            box-shadow: 0 0 15px rgba(0, 198, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced Button */
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.4);
+        }
+
+        /* Enhanced Footer */
+        .footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        /* Enhanced Particles */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+            opacity: 0;
+        }
+
+        /* New Animation Keyframes */
+        @keyframes fadeInAndSlide {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInDown {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            0% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Enhanced floating animation */
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translate(var(--translateX), -100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Animation Timing */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+
+    <header class="header">
+        <div class="brand">TrendWaveAI</div>
+    </header>
+
+    <main class="main-content">
+        <h1 class="welcome-text">Welcome to the Future of Social Media</h1>
+        
+        <div class="form-container">
+            <p class="connect-text">Connect your X Account</p>
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Username">
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Password">
+            </div>
+            <button onclick="updateEnv()">Generate Trendy Post</button>
+            <div id="alert-box" class="alert"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>Your credentials are securely used only for posting. We never store your information.</p>
+        <p>© 2025 TrendWaveAI. Exploring the cosmos of social connection.</p>
+    </footer>
+
+    <script>
+        // Enhanced particle creation
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random starting position
+                const startX = Math.random() * 100;
+                const translateX = (Math.random() - 0.5) * 200;
+                
+                particle.style.left = startX + 'vw';
+                particle.style.top = '100vh';
+                particle.style.width = Math.random() * 3 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.setProperty('--translateX', translateX + 'px');
+                
+                // Random animation duration
+                particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
+                particle.style.animationDelay = (Math.random() * 5) + 's';
+                
+                particles.appendChild(particle);
+                
+                // Recreate particle when animation ends
+                particle.addEventListener('animationend', () => {
+                    particles.removeChild(particle);
+                    createParticles();
+                });
+            }
+        }
+
+        function showAlert(message, isSuccess) {
+            const alertBox = document.getElementById('alert-box');
+            alertBox.textContent = message;
+            alertBox.className = 'alert ' + (isSuccess ? 'success' : 'error');
+            alertBox.style.display = 'block';
+            
+            // Add animation
+            alertBox.style.animation = 'fadeInUp 0.3s ease-out';
+            
+            setTimeout(() => {
+                alertBox.style.animation = 'fadeOut 0.3s ease-out';
+                setTimeout(() => {
+                    alertBox.style.display = 'none';
+                }, 300);
+            }, 4000);
+        }
+
+        function updateEnv() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (!username || !password) {
+                showAlert("Please fill in both fields!", false);
+                return;
+            }
+
+            // Add button animation
+            const button = document.querySelector('button');
+            button.disabled = true; // Disable the button
+            button.textContent = 'Posting...'; // Change button text
+
+            fetch('http://127.0.0.1:5001/update-env', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                showAlert(data.message, data.success);
+                
+                // Redirect to analytics.html after a successful post
+                if (data.success) {
+                    setTimeout(() => {
+                        window.location.href = 'analytics.html';
+                    }, 2000); // Redirect after 2 seconds
+                } else {
+                    button.disabled = false; // Re-enable the button on failure
+                    button.textContent = 'Generate Trendy Post'; // Reset button text
+                }
+            })
+            .catch(error => {
+                showAlert("Error: " + error, false);
+                button.disabled = false; // Re-enable the button on error
+                button.textContent = 'Generate Trendy Post'; // Reset button text
+            });
+        }
+
+        // Initialize particles
+        document.addEventListener('DOMContentLoaded', createParticles);
+    </script>
+</body>
+</html>
